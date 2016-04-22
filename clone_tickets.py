@@ -1,17 +1,13 @@
-from jira import JIRA
-from password import password
-from collections import Counter
-from config import server
+from config import jira
 
-options = {
-    'server': server
-}
-jira = JIRA(options, basic_auth=('sorokin', password))    # a username/password tuple
+issues = jira.search_issues('filter=22379')
 
-# props = jira.application_properties()
-
-issues = jira.search_issues('filter=22379 AND "assignee" = "Андрей Сорокин" AND "status" = "Design"')
-
-# Find the top three projects containing issues reported by admin
-top_three = Counter(
-    [issue.fields.project.key for issue in issues]).most_common(3)
+for issue in issues:
+    # new_issue = jira.create_issue(project='COTTMODERN', summary=issue.fields.summary,
+    #                               description=issue.fields.description, issuetype=issue.fields.issuetype)
+    # jira.create_issue_link({'name': 'Link'}, {'key', issue.key}, {'key', new_issue.key})
+    for link in issue.fields.issuelinks:
+        linked = link.outwardIssue if hasattr(link, 'outwardIssue') else link.inwardIssue
+        if (linked.fields.status.name == 'Open'
+             and linked.key.startswith('COTTMODERN-')):
+            print(linked.key)
