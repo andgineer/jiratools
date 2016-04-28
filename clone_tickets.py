@@ -1,13 +1,43 @@
 from config import jira
+import json
 
-issues = jira.search_issues('filter=22379')
+issues = jira.search_issues('"filter"="22379" and "status" = "Design"')
 
 for issue in issues:
-    # new_issue = jira.create_issue(project='COTTMODERN', summary=issue.fields.summary,
-    #                               description=issue.fields.description, issuetype=issue.fields.issuetype)
-    # jira.create_issue_link({'name': 'Link'}, {'key', issue.key}, {'key', new_issue.key})
-    for link in issue.fields.issuelinks:
-        linked = link.outwardIssue if hasattr(link, 'outwardIssue') else link.inwardIssue
-        if (linked.fields.status.name == 'Open'
-             and linked.key.startswith('COTTMODERN-')):
-            print(linked.key)
+    print(issue.key)
+    descr = issue.fields.description
+    t = jira.transitions(issue)
+    if not descr:
+        descr = ''
+    new_issue = jira.create_issue(project='COTTMODERN', summary=issue.fields.summary,
+                                  description=descr, issuetype={'name': 'Task'},
+                                  assignee={'name': 'aa_postponed'})
+    # tt = new_issue.fields.timetracking
+    # tt.originalestimate='4h'
+    # new_issue.update(fields={'timeoriginalestimate': '4h'})
+    jira.create_issue_link('Links', issue.key, new_issue.key)
+    data = {"base":0, "root":0, "actions":[
+            {
+                "action": "add",
+                "issue": new_issue.id,
+                "under": issue.id,
+                "after": 0
+            },]
+            }
+    url = 'https://jira.btmd.ru/rest/structure/1.0/structure/104/forest'
+    r = jira._session.post(url, data=json.dumps(data))
+
+    # jira.transition_issue(issue, '1')
+    # print(r)
+    # break
+    # for link in issue.fields.issuelinks:
+    #     linked = link.outwardIssue if hasattr(link, 'outwardIssue') else link.inwardIssue
+        # if (linked.fields.status.name == 'Open'
+        #      and linked.key.startswith('COTTMODERN-')):
+            # if hasattr(linked.fields, 'labels'):
+            #    labels = linked.fields.labels
+            # else:
+            #    labels = []
+            # linked.update(fields={'labels': labels + ['move2cott']})
+            # print(linked.key)
+print('Done.')
