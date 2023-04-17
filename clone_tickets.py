@@ -16,14 +16,18 @@ for issue in issues:
     # tt.originalestimate='4h'
     # new_issue.update(fields={'timeoriginalestimate': '4h'})
     jira.create_issue_link('Links', issue.key, new_issue.key)
-    data = {"base":0, "root":0, "actions":[
+    data = {
+        "base": 0,
+        "root": 0,
+        "actions": [
             {
                 "action": "add",
                 "issue": new_issue.id,
                 "under": issue.id,
                 "after": 0
-            },]
-            }
+            },
+        ]
+    }
     url = 'https://jira.btmd.ru/rest/structure/1.0/structure/104/forest'
     r = jira._session.post(url, data=json.dumps(data))
 
