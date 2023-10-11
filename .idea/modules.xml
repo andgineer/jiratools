@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/jiratools.iml" filepath="$PROJECT_DIR$/jiratools.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/jiratools.iml" filepath="$PROJECT_DIR$/.idea/jiratools.iml" />
     </modules>
   </component>
 </project>
