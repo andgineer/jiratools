@@ -25,9 +25,10 @@ def clone(user, password, jql, project, issue_type, assignee, endpoint):
 @click.option('--user', default=None, help='JIRA username (defaults to environment variable)')
 @click.option('--password', default=None, help='JIRA password (defaults to environment variable)')
 @click.option('--project', default='COTTMODERN', help='Project name')
-def transition(user, password, project):
+@click.option('--transition', default='In Review', help='Transition name')
+def transition(user, password, project, transition_name):
     """Transition JIRA tickets based on specific logic."""
-    transition_jira_tickets(user, password, project)
+    transition_jira_tickets(user, password, project, transition_name)
 
 
 if __name__ == "__main__":

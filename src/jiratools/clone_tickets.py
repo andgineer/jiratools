@@ -3,10 +3,8 @@ from jiratools.config import initialize_jira
 
 
 def clone_jira_tickets(user, password, jql, project, issue_type, assignee, endpoint):
-    # Initialize JIRA with credentials or defaults
     jira = initialize_jira(user, password)
 
-    # Retrieve issues based on provided JQL query
     issues = jira.search_issues(jql)
 
     for issue in issues:
