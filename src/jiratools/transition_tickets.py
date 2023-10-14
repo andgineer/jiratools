@@ -1,11 +1,11 @@
 from jiratools.config import initialize_jira
 
 
-def transition_jira_tickets(user, password):
+def transition_jira_tickets(user, password, project):
     jira = initialize_jira()
 
     # Fetch issues based on some criteria (example)
-    issues = jira.search_issues('project = COTTMODERN AND status = "In Progress"')
+    issues = jira.search_issues(f'project = {project} AND status = "In Progress"')
 
     for issue in issues:
         print(f'Transitioning issue {issue.key}')

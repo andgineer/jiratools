@@ -30,7 +30,7 @@ jobs:
         python -m pip install .
     - name: Test with pytest
       run: |
-        coverage run -m pytest tests
+        python -m coverage run -m pytest tests
 
     - name: Upload Coverage to Codecov
       if: ${{ matrix.python-version == 3.11 && matrix.platform == 'ubuntu-latest' }}
