@@ -2,11 +2,11 @@
 
 [Full report](https://htmlpreview.github.io/?https://github.com/andgineer/jiratools/blob/python-coverage-comment-action-data/htmlcov/index.html)
 
-| Name              |    Stmts |     Miss |   Cover |   Missing |
-|------------------ | -------: | -------: | ------: | --------: |
-| clone\_tickets.py |       19 |        2 |     89% |    15, 58 |
-| config.py         |        5 |        1 |     80% |         8 |
-|         **TOTAL** |   **24** |    **3** | **88%** |           |
+| Name                            |    Stmts |     Miss |   Cover |   Missing |
+|-------------------------------- | -------: | -------: | ------: | --------: |
+| src/jiratools/clone\_tickets.py |       13 |        0 |    100% |           |
+| src/jiratools/config.py         |        9 |        5 |     44% |      8-14 |
+|                       **TOTAL** |   **22** |    **5** | **77%** |           |
 
 
 ## Setup coverage badge
