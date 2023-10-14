@@ -5,6 +5,7 @@
 This repository contains scripts to automate specific tasks in Jira, 
 such as cloning tickets.
 
-# Development
+# Usage
 
     . ./activate.sh
+    jiratools --help
