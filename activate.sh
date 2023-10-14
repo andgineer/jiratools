@@ -28,9 +28,9 @@ if [[ ! -d ${VENV_FOLDER} ]] ; then
       echo -e $CYAN"creating VENV.."$NC
       python -m venv  ${VENV_FOLDER}
       . ${VENV_FOLDER}/bin/activate
-      echo -e $CYAN"installing development dependencies.."$NC
+      echo -e $CYAN"installing package.."$NC
       python -m pip install --upgrade pip
-      python -m pip install -r requirements.txt
+      python -m pip install -e .
     else
       echo -e $RED"Error to create virtual env. Do you have virtualenv installed?"$NC
       return 1

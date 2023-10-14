@@ -1,4 +1,4 @@
-from config import initialize_jira
+from jiratools.config import initialize_jira
 import json
 
 

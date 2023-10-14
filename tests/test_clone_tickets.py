@@ -1,4 +1,4 @@
-import clone_tickets
+from jiratools import clone_tickets
 
 
 def test_clone_jira_tickets(mock_jira):
