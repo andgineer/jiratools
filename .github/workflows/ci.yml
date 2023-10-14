@@ -31,6 +31,9 @@ jobs:
     - name: Check Python executable path
       run: |
         which python
+        python --version
+        python -c "import jiratools"
+        jiratools --help
     - name: Test with pytest
       run: |
         python -m pytest -v --cov=src/ --cov-report=xml tests
