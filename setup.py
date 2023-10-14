@@ -15,7 +15,7 @@ setuptools.setup(
     description=("Jira Automation Tools."),
     entry_points={
         "console_scripts": [
-            "jiratools=src.jiratools:main",
+            "jiratools=src.jiratools:cli",
         ],
     },
     long_description=long_description,
