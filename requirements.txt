@@ -3,4 +3,4 @@ click
 
 # Testing
 pytest
-coverage
+pytest-cov
