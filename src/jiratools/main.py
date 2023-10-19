@@ -1,4 +1,4 @@
-import click
+import rich_click as click
 from jiratools.clone_tickets import clone_jira_tickets
 from jiratools.transition_tickets import transition_jira_tickets
 

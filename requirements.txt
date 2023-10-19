@@ -1,5 +1,6 @@
 jira
 click
+rich-click
 
 # Testing
 pytest
