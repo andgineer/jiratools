@@ -2,7 +2,9 @@
 .coverage
 coverage.xml
 .idea/**/*
-venv
+.venv
 **/*.egg-info
 **/__pycache__
 **/.pytest_cache
+.idea
+
