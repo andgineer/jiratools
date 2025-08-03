@@ -5,3 +5,7 @@ rich-click
 # Testing
 pytest
 pytest-cov
+
+# lint
+pre-commit
+mypy
