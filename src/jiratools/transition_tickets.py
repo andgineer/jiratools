@@ -15,8 +15,8 @@ def transition_jira_tickets(user, password, project, transition_name):
 
         # Find the transition ID for the specified transition name
         for transition in transitions:
-            if transition['name'] == transition_name:
-                transition_id = transition['id']
+            if transition["name"] == transition_name:
+                transition_id = transition["id"]
                 break
 
         if transition_id is not None:
@@ -36,4 +36,4 @@ def transition_jira_tickets(user, password, project, transition_name):
         #         linked.update(fields={'labels': labels + ['move2cott']})
         #         print(linked.key)
 
-    print('Transition complete.')
+    print("Transition complete.")
