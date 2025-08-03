@@ -5,7 +5,7 @@
 | Name                            |    Stmts |     Miss |   Cover |   Missing |
 |-------------------------------- | -------: | -------: | ------: | --------: |
 | src/jiratools/clone\_tickets.py |       13 |        0 |    100% |           |
-| src/jiratools/config.py         |        9 |        5 |     44% |      8-14 |
+| src/jiratools/config.py         |        9 |        5 |     44% |      9-15 |
 |                       **TOTAL** |   **22** |    **5** | **77%** |           |
 
 
