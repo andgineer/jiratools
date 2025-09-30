@@ -3,7 +3,15 @@ import json
 from jiratools.config import initialize_jira
 
 
-def clone_jira_tickets(user, password, jql, project, issue_type, assignee, endpoint):  # noqa: PLR0913
+def clone_jira_tickets(  # noqa: PLR0913
+    user: str | None,
+    password: str | None,
+    jql: str,
+    project: str,
+    issue_type: str,
+    assignee: str,
+    endpoint: str,
+) -> None:
     jira = initialize_jira(user, password)
 
     issues = jira.search_issues(jql)

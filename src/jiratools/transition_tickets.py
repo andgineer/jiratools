@@ -1,7 +1,12 @@
 from jiratools.config import initialize_jira
 
 
-def transition_jira_tickets(user, password, project, transition_name):
+def transition_jira_tickets(
+    user: str | None,
+    password: str | None,
+    project: str,
+    transition_name: str,
+) -> None:
     jira = initialize_jira(user, password)
 
     issues = jira.search_issues(f'project = {project} AND status = "In Progress"')

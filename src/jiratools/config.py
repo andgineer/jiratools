@@ -2,10 +2,10 @@ import os
 
 from jira import JIRA
 
-server = "https://jira.btmd.ru"
+server: str = "https://jira.btmd.ru"
 
 
-def initialize_jira(user, password):
+def initialize_jira(user: str | None, password: str | None) -> JIRA:
     jira_username = user or os.getenv("JIRA_USERNAME")
     jira_password = password or os.getenv("JIRA_PASSWORD")
 

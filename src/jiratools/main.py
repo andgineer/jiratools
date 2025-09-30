@@ -21,7 +21,15 @@ def cli():
     default="https://jira.btmd.ru/rest/structure/1.0/structure/104/forest",
     help="JIRA endpoint URL",
 )
-def clone(user, password, jql, project, issue_type, assignee, endpoint):  # noqa: PLR0913
+def clone(  # noqa: PLR0913
+    user: str | None,
+    password: str | None,
+    jql: str,
+    project: str,
+    issue_type: str,
+    assignee: str,
+    endpoint: str,
+) -> None:
     """Clone JIRA tickets based on the provided parameters."""
     clone_jira_tickets(user, password, jql, project, issue_type, assignee, endpoint)
 
@@ -31,7 +39,12 @@ def clone(user, password, jql, project, issue_type, assignee, endpoint):  # noqa
 @click.option("--password", default=None, help="JIRA password (defaults to environment variable)")
 @click.option("--project", default="COTTMODERN", help="Project name")
 @click.option("--transition", default="In Review", help="Transition name")
-def transition(user, password, project, transition_name):
+def transition(
+    user: str | None,
+    password: str | None,
+    project: str,
+    transition_name: str,
+) -> None:
     """Transition JIRA tickets based on specific logic."""
     transition_jira_tickets(user, password, project, transition_name)
 

@@ -6,8 +6,10 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 Use the activation script to set up the development environment:
 ```bash
-. ./activate.sh
+source ./activate.sh
 ```
+
+**IMPORTANT**: Always activate the virtual environment before running any commands. Use `source ./activate.sh` before each command.
 
 This script:
 - Creates a virtual environment using UV (Astral's UV package manager)
@@ -18,25 +20,24 @@ This script:
 
 ### Core Application
 ```bash
-jiratools --help                    # Show main help
-jiratools clone --help              # Show clone command options
-jiratools transition --help         # Show transition command options
+source ./activate.sh && jiratools --help                    # Show main help
+source ./activate.sh && jiratools clone --help              # Show clone command options
+source ./activate.sh && jiratools transition --help         # Show transition command options
 ```
 
 ### Testing
 ```bash
-pytest -v --cov=src/ --cov-report=xml tests    # Run tests with coverage
-pytest tests/                                  # Run all tests
-pytest tests/test_clone_tickets.py             # Run specific test file
+source ./activate.sh && pytest -v --cov=src/ --cov-report=xml tests    # Run tests with coverage
+source ./activate.sh && pytest tests/                                  # Run all tests
+source ./activate.sh && pytest tests/test_clone_tickets.py             # Run specific test file
 ```
 
 ### Code Quality
 ```bash
-pre-commit run --all-files          # Run all pre-commit hooks
-ruff check src/                     # Lint source code
-ruff format src/                    # Format source code
-mypy src/                          # Type checking
+source ./activate.sh && pre-commit run --all-files          # Run all pre-commit hooks
 ```
+
+**IMPORTANT**: Always use `pre-commit run --all-files` for code quality checks. Never run ruff or mypy directly.
 
 ## Architecture
 
