@@ -1,7 +1,13 @@
+import sys
+
 import rich_click as click
 
 from jiratools.clone_tickets import clone_jira_tickets
 from jiratools.transition_tickets import transition_jira_tickets
+
+# Ensure UTF-8 encoding on Windows to handle type hints in help text
+if sys.platform == "win32":
+    sys.stdout.reconfigure(encoding="utf-8")  # type: ignore[attr-defined]
 
 
 @click.group()
