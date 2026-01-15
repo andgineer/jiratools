@@ -9,10 +9,12 @@ def transition_jira_tickets(
 ) -> None:
     jira = initialize_jira(user, password)
 
-    issues = jira.search_issues(f'project = {project} AND status = "In Progress"')
+    issues = jira.search_issues(  # type: ignore[bad-assignment]
+        f'project = {project} AND status = "In Progress"',
+    )
 
     for issue in issues:
-        print(f'Transitioning issue {issue.key} to "{transition_name}"')
+        print(f'Transitioning issue {issue.key} to "{transition_name}"')  # type: ignore[missing-attribute]
 
         # Fetch available transitions for the issue
         transitions = jira.transitions(issue)
@@ -27,9 +29,9 @@ def transition_jira_tickets(
         if transition_id is not None:
             # Perform the transition
             jira.transition_issue(issue, transition_id)
-            print(f'Successfully transitioned issue {issue.key} to "{transition_name}"')
+            print(f'Successfully transitioned issue {issue.key} to "{transition_name}"')  # type: ignore[missing-attribute]
         else:
-            print(f'Error: Transition "{transition_name}" not found for issue {issue.key}')
+            print(f'Error: Transition "{transition_name}" not found for issue {issue.key}')  # type: ignore[missing-attribute]
 
         # for link in issue.fields.issuelinks:
         #     linked = link.outwardIssue if hasattr(link, 'outwardIssue') else link.inwardIssue
